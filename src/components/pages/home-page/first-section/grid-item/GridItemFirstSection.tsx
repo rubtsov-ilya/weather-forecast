@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from './GridItemFirstSection.module.sass'
+import styles from './GridItemFirstSection.module.scss'
 
 interface GridItemFirstSectionProps {
   svgIcon: string;

@@ -1,0 +1,49 @@
+@mixin input-sass {
+  border: 1px solid var(--base-button-border);
+  border-radius: 4px;
+  padding: 12px;
+  width: 100%;
+  height: 42px;
+  color: var(--text);
+  background-color: var(--input);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  transition: border 0.2s ease;
+ :focus {
+    border: 1px solid var(--ui-yellow-dark);
+}}
+/* base media */
+@mixin desktop-small {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+  
+@mixin tablet {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+  
+@mixin tablet-small {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+  
+@mixin phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+/* homepage */
+
+/* Because this Figma design doesn't have an adaptive design, I will create it myself,
+ i need this mixin for homepage, to make the design look better */
+@mixin homepage-media-breakpoint-1 {
+  @media (max-width: 1110px) {
+    @content
+  }
+}

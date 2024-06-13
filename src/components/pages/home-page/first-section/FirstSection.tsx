@@ -1,4 +1,4 @@
-import styles from "./FirstSection.module.sass";
+import styles from "./FirstSection.module.scss";
 import LeftWrapper from "./left-wrapper/LeftWrapper";
 import cupImg from '../../../../assets/images/cup-img.png'
 import { FC } from "react";

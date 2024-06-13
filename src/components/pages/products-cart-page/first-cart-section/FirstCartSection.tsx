@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import styles from "./FirstCartSection.module.sass";
+import styles from "./FirstCartSection.module.scss";
 import Form from "./form/Form";
 import Cart from "./cart/Cart";
 import { useGetUserStateQuery } from "../../../../redux/index";

@@ -1,0 +1,20 @@
+@import '../../../../assets/css/_mixins';
+
+.first-section {
+  padding: 40px 0 240px 0;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 32px;
+
+    @include desktop-small {
+      gap: 20px;
+    }
+
+    @include tablet {
+      gap: 32px;
+      grid-template-columns: 1fr;
+    }
+  }
+}
