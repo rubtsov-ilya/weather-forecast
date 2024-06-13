@@ -3,184 +3,23 @@
 :root { 
     /* start of base */
     /* base colors */
-    --base-white: #fff;
-    --base-black: #000000;
-    --base-dusky: #181818;
-    --base-dusky-light: #292929;
-    --base-milk-white: #f3f2f2;
-    --base-dark-gray: #403937 ;
-    /* base backgrounds */
-    --base-background: #fafafa;
-    --base-card: #f3f2f2;
-    /* base components */
-    --base-input: #ededed;
-    --base-hover: #d7d5d5;
-    --base-dark-btn-hover: #2c2c2c;
-    --base-button: #e6e5e5;
-    --base-button-border: #e6e5e5;
-    --base-label: #8d8686;
-    --base-underline: #d9d9d9;
-    --base-search-controls: #403937;
-    --base-search-controls-hover: #e6e6e6;
-    --base-search-controls-hover-dark: #393939;
-    --base-search-border: #403937;
-    /* base text */
-    /* base text light mode*/
-    --base-text: #574f4d;
-    --base-subtitle: #403937;
-    --base-title: #272221;
-    --base-text-product-card: #8d8686;
-    /* dark mode btn */
-    --mode-btn: #181818;
-    --mode-btn-hover: #4b2995;
-    /* base ui colors */
-    --brand-purple: #8047f8;
-    --brand-purple-dark: #4b2995;
-    --brand-purple-light: #ebe5f9;
-    --brand-purple-hover: #5b32b5;
-    --brand-purple-hover-light: #9f72ff;
-    --brand---yellow: #dbac2c;
-    --brand---yellow-dark: #c47f17;
-    --brand-yellow-light: #f1e9c9;
+    --base-gray-900: #13131a;
+	--base-gray-800: #16161f;
+	--base-gray-700: #1c1c27;
+	--base-gray-600: #1e1e29;
+	--base-gray-500: #3b3b54;
+	--base-gray-400: #7f7f98;
+	--base-gray-300: #ababc4;
+	--base-gray-200: #bfbfd4;
+	--base-gray-100: #fafafa;
+	--base-white: #fff;
+	--product-blue-light: #8fb2f5;
+
     /* fonts */
-    --font-family: "Roboto", sans-serif;
-    --second-family: "Baloo-2", sans-serif;
+    --font-family: "Nunito", sans-serif;
+    --second-family: "Roboto", sans-serif;
     --third-family: "Roboto Condensed", sans-serif;
-    /* end of base */
-
-    /* ------------------------ */
-
-    /* light mode */
-    /* text color */
-    --text-accent: var(--base-title);
-    --text-title: var(--base-subtitle);
-    --text: var(--base-text);
-    --text-light: var(--base-text-product-card);
-    /* underline */
-    --underline: var(--base-underline);
-    /* background */
-    --bg-base: var(--base-background);
-    --bg-form: var(--base-card);
-    --bg-card: var(--base-card);
-    /* inputs */
-    --input-label: var(--base-label);
-    --input: var(--base-input);
-    /* logo text */
-    --logo-text: var(--base-subtitle);
-    /* button */
-    --button: var(--base-button);
-    --button-hover: var(--base-hover);
-    --button-active: var(--brand-purple-light);
-    --button-border: var(--brand-purple);
-    /* search-filters */
-    --search-controls: var(--base-search-controls);
-    --search-controls-hover: var(--base-search-controls-hover);
-    --search-controls-border: var(--base-search-border);
-    /* policy-modal bg */
-    --policy-bg: var(--base-white);
-    /*  user-icon */
-    --bg-user-icon: var(--base-milk-white);
-    --user-icon: var(--base-dark-gray);
-    /* ui elements */
-    --ui-purple: var(--brand-purple);
-    --ui-purple-dark: var(--brand-purple-dark);
-    --ui-purple-light: var(--brand-purple-light);
-    --ui-purple-hover: var(--brand-purple-hover);
-    --ui-purple-hover-icons: var(--brand-purple-hover);
-    --ui-yellow: var(--brand---yellow);
-    --ui-yellow-light: var(--brand-yellow-light);
-    --ui-yellow-dark: var(--brand---yellow-dark);
-
-    .dark {
+/*     .dark {
         // dark mode base
-
-        --base-white: #fff;
-        --base-black: #000000;
-        --base-dusky: #181818;
-        --base-dusky-light: #292929;
-        --base-milk-white: #f3f2f2;
-        --base-dark-gray: #403937 ;
-        /* base backgrounds */;
-        --base-background: #000000;
-        --base-card: #181818;
-        /* base components */;
-        --base-input: #ededed;
-        --base-hover: #2c2c2c;
-        --base-dark-btn-hover: #2c2c2c;
-        --base-button: #292929;
-        --base-button-border: #e6e5e5;
-        --base-label: #8d8686;
-        --base-underline: #181818;
-        --base-search-controls: #e6e6e6;
-        --base-search-controls-hover: #393939;
-        --base-search-controls-hover-dark: #393939;
-        --base-search-border: #ededed;
-        /* base text */
-        /* base text light mode*/
-        --base-text: #d7d5d5;
-        --base-subtitle: #fafafa;
-        --base-title: #fafafa;
-        --base-text-product-card: #8d8686;
-        /* dark mode btn */
-        --mode-btn: #e6e5e5;
-        --mode-btn-hover: #d7d5d5;
-        /* base ui colors */
-        --brand-purple: #8047f8;
-        --brand-purple-dark: #4b2995;
-        --brand-purple-light: #ebe5f9;
-        --brand-purple-hover: #9f72ff;
-        --brand-purple-hover-light: #9f72ff;
-        --brand---yellow: #dbac2c;
-        --brand---yellow-dark: #c47f17;
-        --brand-yellow-light: #f1e9c9;
-        /* fonts */
-        --font-family: "Roboto", sans-serif;
-        --second-family: "Baloo-2", sans-serif;
-        --third-family: "Roboto Condensed", sans-serif;
-        /* end of base */
-
-        /* ------------------------ */
-
-        /* dark mode */
-        /* text color */
-        --text-accent: var(--base-title);
-        --text-title: var(--base-subtitle);
-        --text: var(--base-text);
-        --text-light: var(--base-text-product-card);
-        /* underline */
-        --underline: var(--base-underline);
-        /* background */
-        --bg-base: var(--base-background);
-        --bg-form: var(--base-card);
-        --bg-card: var(--base-card);
-        /* inputs */
-        --input-label: var(--base-label);
-        --input: null;
-        /* logo text */
-        --logo-text: var(--base-subtitle);
-        /* button */
-        --button: var(--base-button);
-        --button-hover: var(--base-hover);
-        --button-active: var(--base-dark-btn-hover);
-        --button-border: var(--base-button-border);
-
-        /* search-filters */
-        --search-controls: var(--base-search-controls);
-        --search-controls-hover: var(--base-search-controls-hover);
-        --search-controls-border: var(--base-search-border);
-        /* policy-modal bg */
-        --policy-bg: var(--base-dusky-light);
-        /*  user-icon */
-        --bg-user-icon: var(--base-dusky);
-        --user-icon: var(--base-milk-white);
-
-        /* ui elements */
-        --ui-purple: var(--brand-purple);
-        --ui-purple-dark: var(--brand-purple-dark);
-        --ui-purple-light: var(--brand-purple-light);
-        --ui-purple-hover: var(--brand-purple-hover);
-        --ui-purple-hover-icons: var(--brand-purple-hover);
-        --ui-yellow: var(--brand---yellow);
-        --ui-yellow-light: var(--brand-yellow-light);
-        --ui-yellow-dark: var(--brand---yellow-dark);
-}}
+    } */
+}

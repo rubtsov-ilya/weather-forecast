@@ -1,23 +1,21 @@
 @import '../../../../assets/css/_mixins';
 
 .first-section {
-  background-image: url(../../../../assets/images/first-section-background.png);
-  background-size: 100vw cover;
+  background-image: url("../../../../assets/images/main-page-images/bg/Background-desktop.png");
+  background-size: cover;
   background-position: center;
-  padding: 92px 0;
-
-  @include tablet-small {
-    padding: 30px 0;
-  }
+  background-repeat: no-repeat;
+  padding: 24px 0;
+  height: 100vh;
 
   &__content {
     display: flex;
     justify-content: space-between;
 
-    @include tablet-small {
+/*     @include tablet-small {
       flex-direction: column;
       align-items: center;
-    }
+    } */
   }
 
   &__cup-img {
@@ -25,7 +23,7 @@
     width: 476px;
     object-fit: cover;
 
-    @include homepage-media-breakpoint-1 {
+/*     @include homepage-media-breakpoint-1 {
       height: 288px;
       width: 381px;
     }
@@ -44,6 +42,6 @@
     @include phone {
       height: 241px;
       width: 319px;
-    }
+    } */
   }
 }

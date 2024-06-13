@@ -1,7 +1,7 @@
 html, body {
 font-family: var(--font-family);
 color: var(--base-text);
-background-color: var(--bg-base);
+background-color: var(--base-gray-900);
 }
 
 body.lock {
@@ -9,9 +9,9 @@ overflow: hidden;
 }
 
 .container {
-max-width: 1150px;
-padding: 0 15px;
-margin: 0 auto;
+max-width: 100%;
+padding: 0 24px;
+
 
 // @include tablet {
 //   padding: 0 39px;
