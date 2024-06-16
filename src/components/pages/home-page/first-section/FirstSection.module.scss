@@ -1,4 +1,4 @@
-@import '../../../../assets/css/_mixins';
+@import "../../../../assets/css/_mixins";
 
 .first-section {
   background-image: url("../../../../assets/images/main-page-images/bg/Background-desktop.png");
@@ -10,38 +10,45 @@
 
   &__content {
     display: flex;
-    justify-content: space-between;
-
-/*     @include tablet-small {
+    align-items: center;
+    flex-direction: column;
+    /*     @include tablet-small {
       flex-direction: column;
       align-items: center;
     } */
   }
 
-  &__cup-img {
-    height: 360px;
-    width: 476px;
-    object-fit: cover;
+  &__logo {
+    min-width: 186px;
+    min-height: 32px;
+    margin-top: 48px;
+  }
 
-/*     @include homepage-media-breakpoint-1 {
-      height: 288px;
-      width: 381px;
-    }
+  &__title {
+    margin-top: 160px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    text-align: center;
+    color: var(--base-gray-100);
+  }
+  &__title-span {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 140%;
+    text-align: center;
+    color: var(--product-blue-light);
+  }
 
-    @include tablet {
-      display: none;
-    }
-
-    @include tablet-small {
-      display: unset;
-      width: clamp(319px, -1.083rem + 69.44vw, 516px);
-      height: clamp(241px, -0.792rem + 52.43vw, 390px);
-      margin-top: 38px;
-    }
-
-    @include phone {
-      height: 241px;
-      width: 319px;
-    } */
+  &__subtitle {
+    margin-top: 8px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    text-align: center;
+    color: var(--base-gray-200);
   }
 }
