@@ -1,3 +1,4 @@
+@import '../../assets/css/mixins';
 html, body {
 font-family: var(--font-family);
 color: var(--base-gray-100);
@@ -12,14 +13,9 @@ overflow: hidden;
 max-width: 100%;
 padding: 0 24px;
 
-
-// @include tablet {
-//   padding: 0 39px;
-// }
-//
-// @include mobile {
-//   padding: 0 31px;
-// }
+@include phone {
+  padding: 0 32px;
+}
 }
 
 .none {

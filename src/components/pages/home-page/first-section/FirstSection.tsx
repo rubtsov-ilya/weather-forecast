@@ -11,7 +11,7 @@ const FirstSection: FC = () => {
       <div className="container">
         <div className={styles["first-section__content"]}>
           <LogoSvg className={styles["first-section__logo"]}/>
-          <h1 className={styles["first-section__title"]}>Добро пожаловть в <span className={styles["first-section__title-span"]}>TypeWeather</span></h1>
+          <h1 className={styles["first-section__title"]}>Приветствуем в <span className={styles["first-section__title-span"]}>TypeWeather</span></h1>
           <p className={styles["first-section__subtitle"]}>Выберите город, чтобы увидеть прогноз погоды</p>
           <SearchSelect />
         </div>

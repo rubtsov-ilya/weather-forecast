@@ -1,3 +1,4 @@
+@import '../../../assets/css/mixins';
 .custom-select {
   font-family: var(--font-family) !important;
   font-weight: 400 !important;
@@ -5,7 +6,9 @@
   line-height: 140% !important;
   color: var(--base-gray-100) !important;
   margin-top: 56px !important;
-
+  @include phone {
+    margin-top: 32px !important;
+  }
   &__control {
     border: 1px solid var(--base-gray-600) !important;
     background: var(--base-gray-600) !important;
@@ -14,6 +17,9 @@
     padding: 0px 20px !important;
     width: 504px !important;
     height: 56px !important;
+    @include phone {
+      width: 311px !important;
+    }
 
     &--is-focused {
       border: 1px solid var(--base-gray-600) !important;
@@ -77,6 +83,9 @@
     border-radius: 8px !important;
     box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.4) !important;
     // весь список
+    @include phone {
+      width: 311px !important;
+    }
   }
 
   &__menu-list {
@@ -96,6 +105,9 @@
     transition: all 0.2s ease !important;
     overflow: hidden !important;
     // каждый элемент списка
+    @include phone {
+      width: 311px !important;
+    }
     &:hover {
       background: var(--base-gray-600) !important;
     }
@@ -126,5 +138,8 @@
     min-height: 54px !important;
     transition: all 0.2s ease !important;
     overflow: hidden !important;
+    @include phone {
+      width: 311px !important;
+    }
   }
 }

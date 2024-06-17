@@ -1,4 +1,4 @@
-@import "../../../../assets/css/_mixins";
+@import "../../../../assets/css/mixins";
 
 .first-section {
   background-image: url("../../../../assets/images/main-page-images/bg/Background-desktop.png");
@@ -7,21 +7,23 @@
   background-repeat: no-repeat;
   padding: 24px 0;
   height: 100vh;
+  @include phone {
+    background-image: url("../../../../assets/images/main-page-images/bg/Background-mobile.png");
+  }
 
   &__content {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /*     @include tablet-small {
-      flex-direction: column;
-      align-items: center;
-    } */
   }
 
   &__logo {
     min-width: 186px;
     min-height: 32px;
     margin-top: 48px;
+    @include phone {
+      margin-top: 52px;
+    }
   }
 
   &__title {
@@ -32,6 +34,15 @@
     line-height: 140%;
     text-align: center;
     color: var(--base-gray-100);
+    @include phone {
+      margin-top: 192px;
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: center;
+      color: var(--base-gray-100);
+    }
   }
   &__title-span {
     font-family: var(--font-family);
@@ -40,6 +51,14 @@
     line-height: 140%;
     text-align: center;
     color: var(--product-blue-light);
+    @include phone {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: center;
+      color: var(--product-blue-light);
+    }
   }
 
   &__subtitle {
@@ -50,5 +69,15 @@
     line-height: 140%;
     text-align: center;
     color: var(--base-gray-200);
+    @include phone {
+      margin-top: 4px;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      letter-spacing: -0.04em;
+      text-align: center;
+      color: var(--base-gray-200);
+    }
   }
 }
