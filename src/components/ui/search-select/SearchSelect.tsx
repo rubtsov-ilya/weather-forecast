@@ -4,10 +4,13 @@ import Select from "react-select";
 import { SingleValue } from 'react-select';
 import citiesDb from '../../../../data_base/cities-db.json'
 
-const SearchSelect: FC = () => {
+interface SearchSelectProps {
+  isCityPage?: boolean;
+}
+
+const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-  console.log(inputValue)
 
   useLayoutEffect(() => {
     if (inputValue.length > 0) {
@@ -30,7 +33,7 @@ const SearchSelect: FC = () => {
       onInputChange={(inputValue: string) => setInputValue(inputValue)}
       isSearchable={true}
       isLoading={false}
-      className="custom-select"
+      className={ isCityPage ? `custom-select custom-select--city-page` : "custom-select"}
       classNamePrefix="custom-select"
       name="color"
       options={citiesDb}

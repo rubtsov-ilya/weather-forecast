@@ -10,8 +10,10 @@ overflow: hidden;
 }
 
 .container {
-max-width: 100%;
+max-width: 1366px;
 padding: 0 24px;
+margin: 0 auto;
+flex-grow: 1;
 
 @include phone {
   padding: 0 32px;

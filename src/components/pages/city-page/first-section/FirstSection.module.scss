@@ -1,4 +1,37 @@
 .first-section {
   padding: 24px 0;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  &__main-left-wrapper {
+    max-width: 664px;
+    height: 100%;
+    padding: 16px;
+    background: var(--base-gray-800);
+    border-radius: 12px;
+    flex-grow: 1;
+
+  }
+  &__search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+  }
+  &__logo {
+    min-width: 56px;
+    min-height: 56px;
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--base-gray-600);
+  }
+  &__main-right-wrapper {
+    max-width: 630px;
+    flex-grow: 1;
+  }
 }

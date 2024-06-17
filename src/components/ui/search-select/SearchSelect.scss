@@ -8,6 +8,13 @@
   margin-top: 56px !important;
   @include phone {
     margin-top: 32px !important;
+    &--city-page {
+      margin-top: 0px !important;
+    }
+  }
+  &--city-page {
+    margin-top: 0px !important;
+    flex-grow: 1 !important;
   }
   &__control {
     border: 1px solid var(--base-gray-600) !important;
@@ -155,4 +162,38 @@
       display: none;
     }
   }
+}
+
+/* CITY PAGE MODIFIER */
+
+.custom-select--city-page {
+  .custom-select__control {
+    width: 100% !important;
+    @include phone {
+      width: unset !important;
+    }
+  }
+
+  .custom-select__menu {
+    width: 100% !important;
+    flex-grow: 1 !important;
+    @include phone {
+      width: unset !important;
+    }
+  }
+  .custom-select__no-options-message {
+    width: 100% !important;
+    flex-grow: 1 !important;
+    @include phone {
+      width: unset !important;
+    }
+  }
+  .custom-select__option {
+    width: 100% !important;
+    flex-grow: 1 !important;
+    @include phone {
+      width: unset !important;
+    }
+  }
+
 }
