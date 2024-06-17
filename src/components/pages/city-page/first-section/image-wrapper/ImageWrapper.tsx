@@ -10,7 +10,6 @@ const ImageWrapper: FC = () => {
   const [dayTime, setDayTime] = useState<'day' | 'night'>('day')
   const currentDate = new Date();
   const currentHour = currentDate.getHours();
-  const aaa = 'night'
 
   useLayoutEffect(() => {
     if (currentHour >= 18 || currentHour < 6) {
@@ -20,7 +19,6 @@ const ImageWrapper: FC = () => {
     }
 
   }, [currentHour])
-  
 
   const weatherIcons = {
     night: {
@@ -34,7 +32,7 @@ const ImageWrapper: FC = () => {
     // добавляем другие категории иконок
   };
 
-  const WeatherIconComponent = weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons['night']['fewclouds'] : null;
+  const WeatherIconComponent = weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons[dayTime]['fewclouds'] : null;
   
   const formattedDate = currentDate.toLocaleDateString('ru-RU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   const firstLetter = formattedDate.charAt(0).toUpperCase();

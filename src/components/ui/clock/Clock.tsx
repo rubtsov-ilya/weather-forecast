@@ -3,8 +3,12 @@ import styles from './Clock.module.scss'
 
 const Clock = () => {
   const [time, setTime] = useState('');
-
+  
   useEffect(() => {
+    const currentTimeRender = new Date();
+    const hoursRender = currentTimeRender.getHours().toString().padStart(2, '0');
+    const minutesRender = currentTimeRender.getMinutes().toString().padStart(2, '0');
+    setTime(`${hoursRender}:${minutesRender}`);
     const timer = setInterval(() => {
       const currentTime = new Date();
       const hours = currentTime.getHours().toString().padStart(2, '0');
