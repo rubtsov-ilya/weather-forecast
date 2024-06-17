@@ -32,6 +32,7 @@
   }
 
   &__value-container {
+    padding: 0 !important;
   }
 
   &__placeholder {
@@ -62,6 +63,7 @@
   }
 
   &__indicator {
+    padding: 0 !important;
     svg {
       display: none;
     }
@@ -140,6 +142,17 @@
     overflow: hidden !important;
     @include phone {
       width: 311px !important;
+    }
+  }
+
+  &__loading-indicator {
+    background-image: url("../../../assets/images/city-page-images/phosphor-icons/Type=spinner-gap-regular-blue.svg") !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin-right: 0px !important;
+    span {
+      display: none;
     }
   }
 }

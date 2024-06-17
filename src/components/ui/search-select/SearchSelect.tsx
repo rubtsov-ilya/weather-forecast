@@ -29,6 +29,7 @@ const SearchSelect: FC = () => {
       placeholder='Поиск города'
       onInputChange={(inputValue: string) => setInputValue(inputValue)}
       isSearchable={true}
+      isLoading={false}
       className="custom-select"
       classNamePrefix="custom-select"
       name="color"
