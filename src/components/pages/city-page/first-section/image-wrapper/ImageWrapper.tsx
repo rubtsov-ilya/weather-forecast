@@ -5,20 +5,12 @@ import DividerSvg from '../../../../../assets/images/city-page-images/phosphor-i
 import FewCloudsNight from '../../../../../assets/images/city-page-images/weather-svg/night/Weather=FewClouds,Moment=Night.svg?react'
 import FewCloudsDay from '../../../../../assets/images/city-page-images/weather-svg/day/Weather=FewClouds,Moment=Day.svg?react'
 import CloudyNight from '../../../../../assets/images/city-page-images/weather-svg/night/Weather=Cloudy,Moment=Night.svg?react'
+
+interface ImageWrapperProps {
+  dayTime: "day" | "night";
+}
  
-const ImageWrapper: FC = () => {
-  const [dayTime, setDayTime] = useState<'day' | 'night'>('day')
-  const currentDate = new Date();
-  const currentHour = currentDate.getHours();
-
-  useLayoutEffect(() => {
-    if (currentHour >= 18 || currentHour < 6) {
-      setDayTime('night')
-    } else {
-      return
-    }
-
-  }, [currentHour])
+const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
 
   const weatherIcons = {
     night: {
@@ -31,7 +23,7 @@ const ImageWrapper: FC = () => {
     }
     // добавляем другие категории иконок
   };
-
+  const currentDate = new Date();
   const WeatherIconComponent = weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons[dayTime]['fewclouds'] : null;
   
   const formattedDate = currentDate.toLocaleDateString('ru-RU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });

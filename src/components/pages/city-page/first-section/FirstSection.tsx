@@ -1,10 +1,22 @@
 import styles from './FirstSection.module.scss'
-import { FC } from 'react'
+import { FC, useLayoutEffect, useState } from 'react'
 import LogoSvg from '../../../../assets/images/logo-icons/Logo-city-page.svg?react'
 import SearchSelect from '../../../ui/search-select/SearchSelect'
 import ImageWrapper from './image-wrapper/ImageWrapper'
+import WeatherDetail from './weather-details/WeatherDetail'
 
 const FirstSection: FC = () => {
+  const [dayTime, setDayTime] = useState<'day' | 'night'>('day')
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours();
+
+  useLayoutEffect(() => {
+    if (currentHour >= 18 || currentHour < 6) {
+      setDayTime('night')
+    } else {
+      return
+    }
+  }, [currentHour])
   return (
     <section className={styles["first-section"]}>
     <div className="container">
@@ -14,10 +26,10 @@ const FirstSection: FC = () => {
             <LogoSvg className={styles["first-section__logo"]}/>
             <SearchSelect isCityPage={true}/>
           </div>
-          <ImageWrapper />
+          <ImageWrapper dayTime={dayTime}/>
         </div>
         <div className={styles["first-section__main-right-wrapper"]}>
-          <div className={styles["first-section__weather-details"]}>компонент локальный</div>
+          <WeatherDetail />
           <div className={styles["first-section__5-day-forecast"]}>компонент локальный</div>
         </div>
       </div>
