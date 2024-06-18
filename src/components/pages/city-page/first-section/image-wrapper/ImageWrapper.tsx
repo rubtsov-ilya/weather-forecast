@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect, useState } from 'react'
+import { FC } from 'react'
 import styles from './ImageWrapper.module.scss'
 import Clock from '../../../../ui/clock/Clock';
 import DividerSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Divider.svg?react'
@@ -16,12 +16,12 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
     night: {
       fewclouds: FewCloudsNight,
       cloudy: CloudyNight,
-      // добавляем другие иконки для night и меняем ключ на название какого-нибудь ключа из апи, чтобы по данным с апи вызывать эти картинки
+      // другие иконки для night и меняем ключ на название какого-нибудь ключа из апи, чтобы по данным с апи вызывать эти картинки
     },
     day: {
       fewclouds: FewCloudsDay,
+      // другие иконки для night и меняем ключ на название какого-нибудь ключа из апи, чтобы по данным с апи вызывать эти картинки
     }
-    // добавляем другие категории иконок
   };
   const currentDate = new Date();
   const WeatherIconComponent = weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons[dayTime]['fewclouds'] : null;
@@ -33,7 +33,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
 
 
   return (
-    <div style={{ backgroundImage: "url('../../../../../../src/assets/images/city-page-images/weather-bg/night/Weather=Few Clouds,Moment=Night.png')" }} className={styles["image-wrapper"]}>
+    <div style={{ backgroundImage: `url('../../../../../../src/assets/images/city-page-images/weather-bg/${dayTime}/Weather=fewClouds.png')` }} className={styles["image-wrapper"]}>
       <div className={styles["image-wrapper__top-wrapper"]}>
         <div className={styles["image-wrapper__info"]}>
           <h1 className={styles["image-wrapper__location"]}>Котово, Волгоградская область</h1>
@@ -47,7 +47,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
           <div className={styles["image-wrapper__temperature-maxmin-wrapper"]}>
             <p className={styles["image-wrapper__temperature-maxmin"]}>32ºc / 26ºc </p>
             <DividerSvg className={styles["image-wrapper__divider"]}/>
-            <p className={styles["image-wrapper__weather-desc"]}>Низкая облачность</p>
+            <p className={styles["image-wrapper__weather-desc"]}>Слабая облачность</p>
           </div>
         </div>
         {WeatherIconComponent && <WeatherIconComponent className={styles["image-wrapper__weather-image"]}/>}

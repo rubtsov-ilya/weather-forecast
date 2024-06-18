@@ -15,6 +15,7 @@
     background: var(--base-gray-800);
     border-radius: 12px;
     flex-grow: 1;
+    flex-shrink: 0.2;
 
   }
   &__search-wrapper {
@@ -31,7 +32,10 @@
     background: var(--base-gray-600);
   }
   &__main-right-wrapper {
+    display: flex;
+    flex-direction: column;
     max-width: 630px;
     flex-grow: 1;
+    gap: 16px;
   }
 }

@@ -4,6 +4,7 @@ import LogoSvg from '../../../../assets/images/logo-icons/Logo-city-page.svg?rea
 import SearchSelect from '../../../ui/search-select/SearchSelect'
 import ImageWrapper from './image-wrapper/ImageWrapper'
 import WeatherDetail from './weather-details/WeatherDetail'
+import DaysForecast from './days-forecast/DaysForecast'
 
 const FirstSection: FC = () => {
   const [dayTime, setDayTime] = useState<'day' | 'night'>('day')
@@ -30,7 +31,7 @@ const FirstSection: FC = () => {
         </div>
         <div className={styles["first-section__main-right-wrapper"]}>
           <WeatherDetail />
-          <div className={styles["first-section__5-day-forecast"]}>компонент локальный</div>
+          <DaysForecast />
         </div>
       </div>
     </div>
