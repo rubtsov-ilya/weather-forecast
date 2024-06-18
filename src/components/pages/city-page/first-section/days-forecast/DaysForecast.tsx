@@ -63,8 +63,8 @@ const DaysForecast = () => {
               {WeatherIcon && <WeatherIcon className={styles["days-forecast__svg-icon"]}/>}
               <p className={styles["days-forecast__weather-desc"]}>{day.desc}</p>
               <div className={styles["days-forecast__minmax-temp-wrapper"]}>
-                <p className={styles["days-forecast__max-temp"]}>{`${day.maxTemp}ºc`}</p>
-                <p className={styles["days-forecast__min-temp"]}>{`${day.minTemp}ºc`}</p>
+                <p className={styles["days-forecast__max-temp"]}>{day.maxTemp}ºc</p>
+                <p className={styles["days-forecast__min-temp"]}>{day.minTemp}ºc</p>
               </div>
             </div>
           );
