@@ -26,7 +26,7 @@ interface IWeatherData {
 const DaysForecast = () => {
   const days: IDays[] = [];
   const currentDate = new Date();
-  const weatherData: IWeatherData[] = [{weather: 'storm', desc: 'Гроза'}, {weather: 'rain', desc: 'Дождь'}, {weather: 'fewClouds', desc: 'Слабая облачность'}, {weather: 'cloudy', desc: 'Облачно'}, {weather: 'clear', desc: 'Ясно'}]
+  const weatherData: IWeatherData[] = [{weather: 'storm', desc: 'Слабая облачность'}, {weather: 'rain', desc: 'Слабая облачность'}, {weather: 'fewClouds', desc: 'Слабая облачность'}, {weather: 'cloudy', desc: 'Облачно'}, {weather: 'clear', desc: 'Ясно'}]
 
   for (let i = 0; i < 5; i++) {
     const day = new Date(currentDate);
@@ -36,7 +36,7 @@ const DaysForecast = () => {
       name: dayName.charAt(0).toUpperCase() + dayName.slice(1),
       icon: weatherData[i].weather,
       desc: weatherData[i].desc,
-      maxTemp: '35',
+      maxTemp: '13',
       minTemp: '27',
     });
   }

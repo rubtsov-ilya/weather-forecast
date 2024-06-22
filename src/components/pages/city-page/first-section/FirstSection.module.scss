@@ -1,12 +1,25 @@
+@import '../../../../assets/css/mixins';
 .first-section {
   padding: 24px 0;
   height: 100vh;
   display: flex;
   align-items: center;
+  @include desktop-small {
+    align-items: unset;
+    height: unset;
+    padding: 24px 0;
+  }
+  @include phone {
+    padding: 8px 0;
+  }
   &__content {
     display: flex;
     align-items: center;
     gap: 24px;
+    @include desktop-small {
+      flex-direction: column;
+      align-items: unset;
+    }
   }
   &__main-left-wrapper {
     max-width: 664px;
@@ -17,13 +30,21 @@
     flex-grow: 1;
     /* flex-shrink: 0.2; */
     flex-basis: 30%;
-
+    @include desktop-small {
+      max-width: 100%;
+    }
+    @include phone {
+      padding: 12px;
+    }
+    
   }
   &__search-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
-    
+    @include phone {
+      gap: 8px;
+    }
   }
   &__logo {
     min-width: 56px;
@@ -40,5 +61,9 @@
     gap: 16px;
     /* flex-shrink: 0.2; */
     /* flex-basis: 1; */
+    @include desktop-small {
+      max-width: 100%;
+      gap: 24px;
+    }
   }
 }

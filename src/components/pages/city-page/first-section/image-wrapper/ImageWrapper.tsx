@@ -36,7 +36,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
     <div style={{ backgroundImage: `url('../../../../../../src/assets/images/city-page-images/weather-bg/${dayTime}/Weather=fewClouds.png')` }} className={styles["image-wrapper"]}>
       <div className={styles["image-wrapper__top-wrapper"]}>
         <div className={styles["image-wrapper__info"]}>
-          <h1 className={styles["image-wrapper__location"]}>Котово, Волгоградская область</h1>
+          <h1 className={styles["image-wrapper__location"]}>Алагир, Республика Северная Осетия - Алания</h1>
           <p className={styles["image-wrapper__date"]}>{formattedString}</p>
         </div>
         <Clock />

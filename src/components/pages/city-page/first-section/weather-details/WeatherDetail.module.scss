@@ -1,8 +1,15 @@
+@import '../../../../../assets/css/mixins';
 .weather-details {
   border-radius: 12px;
   height: 398px;
   background: var(--base-gray-800);
   padding: 28px 24px 8px 24px;
+  @include tablet-small {
+    height: unset;
+    }
+  @include phone {
+    padding: 4px 16px;
+    }
 
   &__title {
     font-family: var(--font-family);
@@ -10,10 +17,16 @@
     font-size: 16px;
     line-height: 140%;
     color: var(--base-gray-400);
+    @include phone {
+      display: none;
+    }
   }
 
   &__main-wrapper {
     margin-top: 20px;
+    @include tablet-small {
+      margin-top: 0;
+      }
   }
 
   &__item-wrapper {
@@ -35,6 +48,12 @@
     path {
       fill: #3b3b55;
     }
+    @include tablet-small {
+      height: 24px !important;
+      width: 24px !important;
+      min-height: 24px !important;
+      min-width: 24px !important;
+    }
   }
 
   &__desc {
@@ -51,6 +70,9 @@
     font-size: 20px;
     line-height: 140%;
     color: var(--base-gray-100);
+    @include tablet-small {
+font-size: 16px;
+    }
   }
 
   &__value-span {

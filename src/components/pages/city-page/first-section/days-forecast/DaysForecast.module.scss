@@ -1,8 +1,15 @@
+@import '../../../../../assets/css/mixins';
 .days-forecast {
   height: 306px;
   padding: 28px 24px 24px 24px;
   border-radius: 12px;
   background: var(--base-gray-800);
+  @include desktop-small {
+    height: unset;
+  }
+  @include phone {
+    padding: 12px;
+  }
 
   &__title {
     font-family: var(--font-family);
@@ -10,6 +17,9 @@
     font-size: 16px;
     line-height: 140%;
     color: var(--base-gray-400);
+    @include phone {
+      display: none;
+    }
   }
 
   &__days-wrapper {
@@ -17,6 +27,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     align-items: center;
+    @include tablet {
+      grid-template-columns: repeat(auto-fit, minmax(0, auto));
+    }
+    @include phone {
+      margin-top: 0;
+    }
   }
 
   &__day-wrapper {
@@ -25,6 +41,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include desktop-small {
+      height: unset;
+      padding: 28.5px 0;
+    }
+    @include phone {
+      padding: 14px 0;
+    }
   }
 
   &__day-name {
@@ -39,6 +62,14 @@
     margin-top: 14px;
     width: 67px !important;
     height: 67px !important;
+    @include desktop-small {
+      margin-top: 12px;
+    }
+    @include phone {
+      margin-top: 4px;
+      width: 56px !important;
+      height: 56px !important;
+    }
   }
 
   &__weather-desc {
@@ -49,15 +80,28 @@
     line-height: 140%;
     text-align: center;
     color: var(--base-gray-200);
+    @include desktop-small {
+      margin-top: 12px;
+    }
+    @include tablet-small {
+      display: none;
+    }
   }
 
   &__minmax-temp-wrapper {
-    width: 67px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     margin-top: auto;
+    @include desktop-small {
+      margin-top: 4px;
+    }
+    @include phone {
+      flex-direction: column;
+      gap: 0;
+      align-items: flex-end;
+    }
   }
 
   &__max-temp {
