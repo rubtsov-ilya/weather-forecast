@@ -1,4 +1,4 @@
-import { FC, useEffect, useLayoutEffect, useState } from 'react'
+import { FC, useLayoutEffect, useState } from 'react'
 import styles from './ImageWrapper.module.scss'
 import Clock from '../../../../ui/clock/Clock';
 import DividerSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Divider.svg?react'

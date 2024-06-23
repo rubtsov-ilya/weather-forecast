@@ -72,7 +72,9 @@ const fetchWeatherData = async () => {
 };
 
 useLayoutEffect(() => {
-  fetchWeatherData();
+  if (latitude && longitude) {
+    fetchWeatherData();
+  }
   }, 
 [latitude, longitude]);
   return (
