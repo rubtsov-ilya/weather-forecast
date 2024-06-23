@@ -1,10 +1,10 @@
 import styles from './DaysForecast.module.scss';
-import ClearSvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=Clear,Moment=Day.svg?react';
-import CloudySvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=Cloudy,Moment=Day.svg?react';
-import FewCloudsSvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=FewClouds,Moment=Day.svg?react';
-import RainSvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=Rain,Moment=Day.svg?react';
-import SnowSvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=Snow,Moment=Day.svg?react';
-import StormSvg from '../../../../../assets/images/city-page-images/days-forecast-svg/Weather=Storm,Moment=Day.svg?react';
+import ClearSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Clear,Moment=Day.svg?react';
+import CloudySvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Cloudy,Moment=Day.svg?react';
+import FewCloudsSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=FewClouds,Moment=Day.svg?react';
+import RainSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Rain,Moment=Day.svg?react';
+import SnowSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Snow,Moment=Day.svg?react';
+import StormSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Storm,Moment=Day.svg?react';
 
 type WeatherIconsType = {
   [Key in 'clear' | 'cloudy' | 'fewClouds' | 'rain' | 'snow' | 'storm']: React.FunctionComponent<React.SVGProps<SVGSVGElement>>

@@ -3,7 +3,7 @@ import ScrollToTopProvider from "../providers/ScrollToTopProvider.tsx";
 import ServerErrorProvider from "../providers/ServerErrorProvider.tsx";
 import NotfoundPage from "../components/pages/not-found-page/NotfoundPage.tsx";
 import HomePage from "../components/pages/home-page/HomePage.tsx";
-import CityPage from "../components/pages/city-page/CityPage.tsx";
+import WeatherPage from "../components/pages/weather-page/WeatherPage.tsx";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <ScrollToTopProvider />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="city" element={<CityPage />} />
+        <Route path="weather" element={<WeatherPage />} />
         <Route path="*" element={<NotfoundPage />} />
       </Routes>
     </ServerErrorProvider>

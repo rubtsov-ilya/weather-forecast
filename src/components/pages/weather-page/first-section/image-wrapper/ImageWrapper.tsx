@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import styles from './ImageWrapper.module.scss'
 import Clock from '../../../../ui/clock/Clock';
-import DividerSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Divider.svg?react'
-import FewCloudsNight from '../../../../../assets/images/city-page-images/weather-svg/night/Weather=FewClouds,Moment=Night.svg?react'
-import FewCloudsDay from '../../../../../assets/images/city-page-images/weather-svg/day/Weather=FewClouds,Moment=Day.svg?react'
-import CloudyNight from '../../../../../assets/images/city-page-images/weather-svg/night/Weather=Cloudy,Moment=Night.svg?react'
+import DividerSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Divider.svg?react'
+import FewCloudsNight from '../../../../../assets/images/weather-page-images/weather-svg/night/Weather=FewClouds,Moment=Night.svg?react'
+import FewCloudsDay from '../../../../../assets/images/weather-page-images/weather-svg/day/Weather=FewClouds,Moment=Day.svg?react'
+import CloudyNight from '../../../../../assets/images/weather-page-images/weather-svg/night/Weather=Cloudy,Moment=Night.svg?react'
 
 interface ImageWrapperProps {
   dayTime: "day" | "night";
@@ -33,7 +33,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
 
 
   return (
-    <div style={{ backgroundImage: `url('../../../../../../src/assets/images/city-page-images/weather-bg/${dayTime}/Weather=fewClouds.png')` }} className={styles["image-wrapper"]}>
+    <div style={{ backgroundImage: `url('../../../../../../src/assets/images/weather-page-images/weather-bg/${dayTime}/Weather=fewClouds.png')` }} className={styles["image-wrapper"]}>
       <div className={styles["image-wrapper__top-wrapper"]}>
         <div className={styles["image-wrapper__info"]}>
           <h1 className={styles["image-wrapper__location"]}>Алагир, Республика Северная Осетия - Алания</h1>
@@ -51,8 +51,6 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
           </div>
         </div>
         {WeatherIconComponent && <WeatherIconComponent className={styles["image-wrapper__weather-image"]}/>}
-        {/* <FewCloudsNight className={styles["image-wrapper__weather-image"]}/> */}
-        {/* <img className={styles["image-wrapper__weather-image"]} src="../../../../../../src/assets/images/city-page-images/weather-images/Weather=Few clouds, Moment=Day.png" alt="image" /> */}
       </div>
     </div>
   )

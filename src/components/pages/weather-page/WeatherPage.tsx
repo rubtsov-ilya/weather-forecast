@@ -1,7 +1,7 @@
 import { FC } from "react"
 import FirstSection from "./first-section/FirstSection"
 
-const CityPage: FC = () => {
+const WeatherPage: FC = () => {
   return (
     <main>
       <FirstSection />
@@ -9,4 +9,4 @@ const CityPage: FC = () => {
   )
 }
 
-export default CityPage
+export default WeatherPage

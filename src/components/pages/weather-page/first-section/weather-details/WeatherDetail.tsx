@@ -1,9 +1,9 @@
 import styles from "./WeatherDetail.module.scss";
-import TemperatureSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Type=thermometer-simple-light.svg?react'
-import CloudSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Type=cloud-rain-light.svg?react'
-import WindSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Type=wind-light.svg?react'
-import DropSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Type=drop-light.svg?react'
-import SunSvg from '../../../../../assets/images/city-page-images/phosphor-icons/Type=sun-dim-light.svg?react'
+import TemperatureSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=thermometer-simple-light.svg?react'
+import CloudSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=cloud-rain-light.svg?react'
+import WindSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=wind-light.svg?react'
+import DropSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=drop-light.svg?react'
+import SunSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=sun-dim-light.svg?react'
 
 const WeatherDetail = () => {
   return (
