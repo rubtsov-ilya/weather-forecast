@@ -1,8 +1,13 @@
-import { FC, useLayoutEffect, useState } from 'react'
+import { FC, useEffect, useLayoutEffect, useState } from 'react'
 import './SearchSelect.scss'
 import Select from "react-select";
 import { SingleValue } from 'react-select';
 import citiesDb from '../../../../data_base/cities-db.json'
+import { ISelectOptions } from '../../../interfaces/SelectOptions.interface';
+import { useDispatch } from 'react-redux'
+import { setCityInfo } from '../../../redux/slices/cityInfoSlice';
+import useCityInfo from '../../../hooks/useCityInfo';
+
 
 interface SearchSelectProps {
   isCityPage?: boolean;
@@ -11,6 +16,12 @@ interface SearchSelectProps {
 const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+  const locationSearchParams: URLSearchParams = new URLSearchParams(window.location.search);
+  const { regionType, region, areaType, area, city, latitude, longitude, label, value } = useCityInfo()
+  const dispatch = useDispatch()
+
+  /* console.log(regionType, region, areaType, area, city, latitude, longitude, label, value) */
+  console.log(regionType, region, areaType, area, city, latitude, longitude, label, value)
 
   useLayoutEffect(() => {
     if (inputValue.length > 0) {
@@ -21,7 +32,62 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
     
   }, [inputValue])
 
-  const NoOptionsMessage = () => (
+  useEffect(() => {
+    const latValue: string | null = locationSearchParams.get('lat');
+    const lonValue: string | null = locationSearchParams.get('lon');
+    if (latValue && lonValue) {
+      if (latValue === latitude && lonValue === longitude) {
+        return
+      } else {
+        const newCity = citiesDb.find((city) => city.latitude === latValue && city.longitude === lonValue)
+        if (newCity) {
+          dispatch(setCityInfo({
+            regionType: newCity.regionType,
+            region: newCity.region,
+            areaType: newCity.areaType,
+            area: newCity.area,
+            city: newCity.city,
+            latitude: newCity.latitude,
+            longitude: newCity.longitude,
+            label: newCity.label,
+            value: newCity.value,
+          })
+      )
+        } else {
+          return
+        }
+      }
+    } 
+  }, [])
+
+  useEffect(() => {
+    if (latitude && longitude) {
+      locationSearchParams.set('lat', latitude);
+      locationSearchParams.set('lon', longitude);
+      const newUrl = `?${locationSearchParams.toString()}`;
+      window.history.pushState({}, '', newUrl);
+    }
+
+  }, [latitude, longitude])
+  
+
+  const handleChangeSelect = (selectValue: SingleValue<ISelectOptions>): void => {
+    if (selectValue) {
+      dispatch(setCityInfo({
+          regionType: selectValue.regionType,
+          region: selectValue.region,
+          areaType: selectValue.areaType,
+          area: selectValue.area,
+          city: selectValue.city,
+          latitude: selectValue.latitude,
+          longitude: selectValue.longitude,
+          label: selectValue.label,
+          value: selectValue.value,
+        })
+    )}
+  }
+
+  const NoOptionsMessage = (): React.ReactElement => (
     <div className="custom-select__no-options-message">
       Ничего не найдено
     </div>
@@ -31,6 +97,7 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
     <Select
       placeholder='Поиск города'
       onInputChange={(inputValue: string) => setInputValue(inputValue)}
+      onChange={handleChangeSelect}
       isSearchable={true}
       isLoading={false}
       className={ isCityPage ? `custom-select custom-select--city-page` : "custom-select"}

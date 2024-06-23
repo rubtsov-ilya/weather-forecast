@@ -24,7 +24,7 @@ const WeatherDetail = () => {
         <div className={styles["weather-details__item-wrapper"]}>
           <div className={styles["weather-details__desc-wrapper"]}>
             <CloudSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>Вероятность дождя</p>
+            <p className={styles["weather-details__desc"]}>Вероятность осадков</p>
           </div>
           <p className={styles["weather-details__value"]}>{'22'}<span className={styles["weather-details__value-span"]}>%</span></p>
         </div>

@@ -1,16 +1,30 @@
-import { FC } from 'react'
+import { FC, useEffect, useLayoutEffect, useState } from 'react'
 import styles from './ImageWrapper.module.scss'
 import Clock from '../../../../ui/clock/Clock';
 import DividerSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Divider.svg?react'
 import FewCloudsNight from '../../../../../assets/images/weather-page-images/weather-svg/night/Weather=FewClouds,Moment=Night.svg?react'
 import FewCloudsDay from '../../../../../assets/images/weather-page-images/weather-svg/day/Weather=FewClouds,Moment=Day.svg?react'
 import CloudyNight from '../../../../../assets/images/weather-page-images/weather-svg/night/Weather=Cloudy,Moment=Night.svg?react'
+import { IWeatherData } from '../../../../../interfaces/WeatherData.interface';
 
 interface ImageWrapperProps {
-  dayTime: "day" | "night";
+  weatherDataState: IWeatherData | null
 }
  
-const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
+const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
+  const [dayTime, setDayTime] = useState<'day' | 'night'| null>(null)
+  const currentDate = new Date();
+  const currentHour = weatherDataState?.current?.time.getHours()
+
+  useLayoutEffect(() => {
+    if (currentHour) {
+      if (currentHour >= 18 || currentHour < 6) {
+        setDayTime('night')
+      } else {
+        return
+      }
+    }
+  }, [currentHour])
 
   const weatherIcons = {
     night: {
@@ -23,8 +37,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
       // другие иконки для night и меняем ключ на название какого-нибудь ключа из апи, чтобы по данным с апи вызывать эти картинки
     }
   };
-  const currentDate = new Date();
-  const WeatherIconComponent = weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons[dayTime]['fewclouds'] : null;
+  const WeatherIconComponent = dayTime !== null && weatherIcons[dayTime] && weatherIcons[dayTime]['fewclouds'] ? weatherIcons[dayTime]['fewclouds'] : null;
   
   const formattedDate = currentDate.toLocaleDateString('ru-RU', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   const firstLetter = formattedDate.charAt(0).toUpperCase();
@@ -51,6 +64,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ dayTime }) => {
           </div>
         </div>
         {WeatherIconComponent && <WeatherIconComponent className={styles["image-wrapper__weather-image"]}/>}
+        {!WeatherIconComponent && <div className={styles["image-wrapper__weather-image"]}></div>}
       </div>
     </div>
   )

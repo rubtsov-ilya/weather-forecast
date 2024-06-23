@@ -8,19 +8,17 @@ import { persistStore,
   PURGE,
   REGISTER, } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import { shopApi } from './shopApi'
-import userReducer from './slices/UserSlice'
+import cityInfoReducer from './slices/cityInfoSlice'
 
 
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['user']
+  whitelist: ['cityInfo']
 }
 
 const rootReduser = combineReducers({
-  [shopApi.reducerPath]: shopApi.reducer,
-  user: userReducer,
+  cityInfo: cityInfoReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReduser)
@@ -33,6 +31,6 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(shopApi.middleware),
+    }),
 })
 export const persistor = persistStore(store)

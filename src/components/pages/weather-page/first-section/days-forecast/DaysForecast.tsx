@@ -1,4 +1,5 @@
 import styles from './DaysForecast.module.scss';
+import { useMediaQuery } from 'react-responsive';
 import ClearSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Clear,Moment=Day.svg?react';
 import CloudySvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=Cloudy,Moment=Day.svg?react';
 import FewCloudsSvg from '../../../../../assets/images/weather-page-images/days-forecast-svg/Weather=FewClouds,Moment=Day.svg?react';
@@ -26,6 +27,7 @@ interface IWeatherData {
 const DaysForecast = () => {
   const days: IDays[] = [];
   const currentDate = new Date();
+  const isMobileMediaQuery = useMediaQuery({ query: '(max-width: 575px)' });
   const weatherData: IWeatherData[] = [{weather: 'storm', desc: 'Слабая облачность'}, {weather: 'rain', desc: 'Слабая облачность'}, {weather: 'fewClouds', desc: 'Слабая облачность'}, {weather: 'cloudy', desc: 'Облачно'}, {weather: 'clear', desc: 'Ясно'}]
 
   for (let i = 0; i < 5; i++) {
@@ -59,7 +61,18 @@ const DaysForecast = () => {
 
           return (
             <div key={index} className={styles["days-forecast__day-wrapper"]}>
-              <p className={styles["days-forecast__day-name"]}>{index === 0 ? 'Завтра' : day.name}</p>
+              {!isMobileMediaQuery && <p className={styles["days-forecast__day-name"]}>{index === 0 ? 'Завтра' : day.name}</p>}
+              {isMobileMediaQuery && (
+              <p className={styles["days-forecast__day-name"]}>
+                {day.name === 'Понедельник' ? 'Пн' :
+                day.name === 'Вторник' ? 'Вт' :
+                day.name === 'Среда' ? 'Ср' :
+                day.name === 'Четверг' ? 'Чт' :
+                day.name === 'Пятница' ? 'Пт' :
+                day.name === 'Суббота' ? 'Сб' :
+                'Вс'}
+              </p>
+              )}
               {WeatherIcon && <WeatherIcon className={styles["days-forecast__svg-icon"]}/>}
               <p className={styles["days-forecast__weather-desc"]}>{day.desc}</p>
               <div className={styles["days-forecast__minmax-temp-wrapper"]}>
