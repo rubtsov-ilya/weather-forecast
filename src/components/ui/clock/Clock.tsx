@@ -1,26 +1,29 @@
-import { useEffect, useState } from 'react';
+import { FC, useLayoutEffect, useState } from 'react';
 import styles from './Clock.module.scss'
 
-const Clock = () => {
+interface ClockProps {
+  currentHour: number | null
+}
+
+const Clock: FC<ClockProps> = ({ currentHour }) => {
   const [time, setTime] = useState('');
-  
-  useEffect(() => {
+  useLayoutEffect(() => {
     const currentTimeRender = new Date();
-    const hoursRender = currentTimeRender.getHours().toString().padStart(2, '0');
     const minutesRender = currentTimeRender.getMinutes().toString().padStart(2, '0');
-    setTime(`${hoursRender}:${minutesRender}`);
+    setTime(`${currentHour}:${minutesRender}`);
     const timer = setInterval(() => {
       const currentTime = new Date();
-      const hours = currentTime.getHours().toString().padStart(2, '0');
       const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-      setTime(`${hours}:${minutes}`);
+      setTime(`${currentHour}:${minutes}`);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [currentHour]);
 
   return (
-    <p className={styles["сlock"]}>{time}</p>
+    <>
+      {currentHour !== null && <p className={styles["сlock"]}>{time}</p>}
+    </>
   )
 }
 

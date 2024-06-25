@@ -14,7 +14,7 @@ interface ImageWrapperProps {
 const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
   const [dayTime, setDayTime] = useState<'day' | 'night'| null>(null)
   const currentDate = new Date();
-  const currentHour = weatherDataState?.current?.time.getHours()
+  const currentHour = weatherDataState?.current?.time.getHours() || null
 
   useLayoutEffect(() => {
     if (currentHour) {
@@ -52,7 +52,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
           <h1 className={styles["image-wrapper__location"]}>Алагир, Республика Северная Осетия - Алания</h1>
           <p className={styles["image-wrapper__date"]}>{formattedString}</p>
         </div>
-        <Clock />
+        <Clock currentHour={currentHour}/>
       </div>
       <div className={styles["image-wrapper__bottom-wrapper"]}>
         <div className={styles["image-wrapper__temperature-wrapper"]}>

@@ -20,7 +20,6 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
   const { regionType, region, areaType, area, city, latitude, longitude, label, value } = useCityInfo()
   const dispatch = useDispatch()
 
-  /* console.log(regionType, region, areaType, area, city, latitude, longitude, label, value) */
   console.log(regionType, region, areaType, area, city, latitude, longitude, label, value)
 
   useLayoutEffect(() => {
@@ -52,12 +51,9 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
             label: newCity.label,
             value: newCity.value,
           })
-      )
-        } else {
+      )} else {
           return
-        }
-      }
-    } 
+        }}} 
   }, [])
 
   useEffect(() => {
