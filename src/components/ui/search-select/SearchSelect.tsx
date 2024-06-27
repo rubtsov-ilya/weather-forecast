@@ -17,10 +17,8 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const locationSearchParams: URLSearchParams = new URLSearchParams(window.location.search);
-  const { regionType, region, areaType, area, city, latitude, longitude, label, value } = useCityInfo()
+  const { latitude, longitude } = useCityInfo()
   const dispatch = useDispatch()
-
-  console.log(regionType, region, areaType, area, city, latitude, longitude, label, value)
 
   useLayoutEffect(() => {
     if (inputValue.length > 0) {
@@ -50,6 +48,7 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
             longitude: newCity.longitude,
             label: newCity.label,
             value: newCity.value,
+            shortenedAddress: newCity.shortenedAddress
           })
       )} else {
           return
@@ -79,6 +78,7 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
           longitude: selectValue.longitude,
           label: selectValue.label,
           value: selectValue.value,
+          shortenedAddress: selectValue.shortenedAddress,
         })
     )}
   }

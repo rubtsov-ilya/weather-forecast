@@ -10,6 +10,7 @@ interface IInitialState {
   longitude: null | string;
   label: null | string;
   value: null | string;
+  shortenedAddress: null | string;
 }
 
 const initialState: IInitialState = {
@@ -22,6 +23,7 @@ const initialState: IInitialState = {
   longitude: null,
   label: null,
   value: null,
+  shortenedAddress: null
 };
 
 const cityInfoSlice = createSlice({
@@ -49,6 +51,7 @@ const cityInfoSlice = createSlice({
       state.longitude = action.payload.longitude;
       state.label = action.payload.label;
       state.value = action.payload.value;
+      state.shortenedAddress = action.payload.shortenedAddress;
     },
     /* removeUser(state) {
       state.email = null;

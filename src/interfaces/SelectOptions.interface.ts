@@ -8,4 +8,5 @@ export interface ISelectOptions {
   longitude: string;
   label: string;
   value: string;
+  shortenedAddress: string;
 }

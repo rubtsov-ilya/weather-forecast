@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { selectCityInfo } from "../redux/slices/cityInfoSlice";
 
 const useCityInfo = () => {
-  const { regionType, region, areaType, area, city, latitude, longitude, label, value } = useSelector(selectCityInfo);
+  const { regionType, region, areaType, area, city, latitude, longitude, label, value, shortenedAddress } = useSelector(selectCityInfo);
 
   return {
     regionType,
@@ -14,6 +14,7 @@ const useCityInfo = () => {
     longitude,
     label,
     value,
+    shortenedAddress,
   };
 };
 

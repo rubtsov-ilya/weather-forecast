@@ -6,6 +6,7 @@ import FewCloudsNight from '../../../../../assets/images/weather-page-images/wea
 import FewCloudsDay from '../../../../../assets/images/weather-page-images/weather-svg/day/Weather=FewClouds,Moment=Day.svg?react'
 import CloudyNight from '../../../../../assets/images/weather-page-images/weather-svg/night/Weather=Cloudy,Moment=Night.svg?react'
 import { IWeatherData } from '../../../../../interfaces/WeatherData.interface';
+import useCityInfo from '../../../../../hooks/useCityInfo';
 
 interface ImageWrapperProps {
   weatherDataState: IWeatherData | null
@@ -13,19 +14,21 @@ interface ImageWrapperProps {
  
 const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
   const [dayTime, setDayTime] = useState<'day' | 'night'| null>(null)
+  const { shortenedAddress } = useCityInfo()
   const currentDate = new Date();
-  const currentHour = weatherDataState?.current?.time.getHours() || null
+  
 
   useLayoutEffect(() => {
-    if (currentHour) {
+    const currentHour = weatherDataState?.current?.time.getHours()
+    if (currentHour !== undefined) {
       if (currentHour >= 18 || currentHour < 6) {
         setDayTime('night')
       } else {
-        return
+        setDayTime('day')
       }
     }
-  }, [currentHour])
-
+  }, [weatherDataState])
+  console.log(dayTime)
   const weatherIcons = {
     night: {
       fewclouds: FewCloudsNight,
@@ -49,18 +52,18 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
     <div style={{ backgroundImage: `url('../../../../../../src/assets/images/weather-page-images/weather-bg/${dayTime}/Weather=fewClouds.png')` }} className={styles["image-wrapper"]}>
       <div className={styles["image-wrapper__top-wrapper"]}>
         <div className={styles["image-wrapper__info"]}>
-          <h1 className={styles["image-wrapper__location"]}>Алагир, Республика Северная Осетия - Алания</h1>
+          <h1 className={styles["image-wrapper__location"]}>{shortenedAddress}</h1>
           <p className={styles["image-wrapper__date"]}>{formattedString}</p>
         </div>
-        <Clock currentHour={currentHour}/>
+        <Clock weatherDataState={weatherDataState}/>
       </div>
       <div className={styles["image-wrapper__bottom-wrapper"]}>
-        <div className={styles["image-wrapper__temperature-wrapper"]}>
-          <p className={styles["image-wrapper__temperature-now"]}>28ºc</p>
+        <div className={styles["image-wrapper__temperature-wrapper"]}><p className={styles["image-wrapper__temperature-now"]}>{weatherDataState ? Math.round(weatherDataState?.current?.temperature2m) : null}ºc</p>
+          
           <div className={styles["image-wrapper__temperature-maxmin-wrapper"]}>
-            <p className={styles["image-wrapper__temperature-maxmin"]}>32ºc / 26ºc </p>
+            <p className={styles["image-wrapper__temperature-maxmin"]}>{weatherDataState ? Math.round(weatherDataState?.daily.temperature2mMax[0]) : null}ºc / {weatherDataState ? Math.round(weatherDataState?.daily.temperature2mMin[0]) : null}ºc </p>
             <DividerSvg className={styles["image-wrapper__divider"]}/>
-            <p className={styles["image-wrapper__weather-desc"]}>Слабая облачность</p>
+            <p className={styles["image-wrapper__weather-desc"]}>Погоды код</p>
           </div>
         </div>
         {WeatherIconComponent && <WeatherIconComponent className={styles["image-wrapper__weather-image"]}/>}

@@ -12,6 +12,7 @@ import { IWeatherData } from '../../../../interfaces/WeatherData.interface'
 const FirstSection: FC = () => {
   const [weatherDataState, setWeatherDataState] = useState<IWeatherData | null>(null)
   const { latitude, longitude } = useCityInfo()
+  const url = "https://api.open-meteo.com/v1/forecast";
   const params = {
     "latitude": latitude,
     "longitude": longitude,
@@ -19,7 +20,6 @@ const FirstSection: FC = () => {
     "daily": ["weather_code", "temperature_2m_max", "temperature_2m_min", "uv_index_max", "precipitation_probability_max"],
     "timezone": "auto"
   };
-  const url = "https://api.open-meteo.com/v1/forecast";
 
 
 
@@ -49,8 +49,17 @@ useLayoutEffect(() => {
         },
         daily: {
           dayOfWeek: range(Number(daily.time()), Number(daily.timeEnd()), daily.interval()).map(
-            (t) => new Date((t + utcOffsetSeconds) * 1000).toLocaleDateString('ru-RU', { weekday: 'long' })
+            (t) => {
+              const day = new Date((t + utcOffsetSeconds) * 1000).toLocaleDateString('ru-RU', { weekday: 'long' });
+              return day.charAt(0).toUpperCase() + day.slice(1);
+            }
           ),
+          date: (() => {
+            const formattedDate = new Date((Number(daily.time()) + utcOffsetSeconds) * 1000).toLocaleDateString('ru-RU', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+            const firstLetter = formattedDate.charAt(0).toUpperCase();
+            const restOfString = formattedDate.slice(1);
+            return firstLetter + restOfString.replace(' г.', '');
+          })(),
           weatherCode: daily.variables(0)!.valuesArray()!,
           temperature2mMax: daily.variables(1)!.valuesArray()!,
           temperature2mMin: daily.variables(2)!.valuesArray()!,
@@ -72,6 +81,7 @@ useLayoutEffect(() => {
 for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length; i++) {
   console.log(
     weatherDataState.daily.dayOfWeek[i],
+    weatherDataState.daily.date,
     weatherDataState.daily.weatherCode[i],
     weatherDataState.daily.temperature2mMax[i].toFixed(2),
     weatherDataState.daily.temperature2mMin[i].toFixed(2),
@@ -92,7 +102,7 @@ for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length;
           <ImageWrapper weatherDataState={weatherDataState}/>
         </div>
         <div className={styles["first-section__main-right-wrapper"]}>
-          <WeatherDetail />
+          <WeatherDetail weatherDataState={weatherDataState}/>
           <DaysForecast />
         </div>
       </div>

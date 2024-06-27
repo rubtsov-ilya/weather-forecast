@@ -10,6 +10,7 @@ export interface IWeatherData {
 };
 daily: {
   dayOfWeek: string[];
+  date: string;
   weatherCode: Float32Array;
   temperature2mMax: Float32Array;
   temperature2mMin: Float32Array;
