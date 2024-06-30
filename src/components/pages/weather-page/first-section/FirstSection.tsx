@@ -8,6 +8,7 @@ import DaysForecast from './days-forecast/DaysForecast'
 import { fetchWeatherApi } from 'openmeteo';
 import useCityInfo from '../../../../hooks/useCityInfo'
 import { IWeatherData } from '../../../../interfaces/WeatherData.interface'
+import useGetWeatherDesc from '../../../../hooks/useGetWeatherDesc'
 
 const FirstSection: FC = () => {
   const [weatherDataState, setWeatherDataState] = useState<IWeatherData | null>(null)
@@ -37,7 +38,7 @@ useLayoutEffect(() => {
       const current = response.current()!;
       const daily = response.daily()!;
       // Note: The order of weather variables in the URL query and the indices below need to match!
-      const weatherData = {
+      const weatherData: IWeatherData = {
         current: {
           time: new Date(Number(current.time()) * 1000 + utcOffsetSeconds * 1000 - 3 * 60 * 60 * 1000),
           temperature2m: current.variables(0)!.value(),
@@ -45,6 +46,11 @@ useLayoutEffect(() => {
           apparentTemperature: current.variables(2)!.value(),
           isDay: current.variables(3)!.value(),
           weatherCode: current.variables(4)!.value(),
+          weatherCodeDescription: (() => {
+            const code = current.variables(4)!.value()
+            const desc = useGetWeatherDesc(code)
+            return desc
+          })(),
           windSpeed10m: current.variables(5)!.value(),
         },
         daily: {
@@ -61,6 +67,14 @@ useLayoutEffect(() => {
             return firstLetter + restOfString.replace(' г.', '');
           })(),
           weatherCode: daily.variables(0)!.valuesArray()!,
+          weatherCodeDescription: (() => {
+            const codeArr = Array.from(daily.variables(0)!.valuesArray()!)
+            const descriptionArr: string[] = codeArr.map((codeItem: number) => {
+            const desc = useGetWeatherDesc(codeItem)
+            return desc
+          })
+          return descriptionArr
+          })(),
           temperature2mMax: daily.variables(1)!.valuesArray()!,
           temperature2mMin: daily.variables(2)!.valuesArray()!,
           uvIndexMax: daily.variables(3)!.valuesArray()!,
@@ -73,16 +87,14 @@ useLayoutEffect(() => {
       setWeatherDataState(weatherData)
     };
     fetchWeatherData();
-  }
-  }, 
-[latitude, longitude]);
+  }}, [latitude, longitude]);
 
-  // weatherData now contains a simple structure with arrays for datetime and weather data
 for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length; i++) {
   console.log(
     weatherDataState.daily.dayOfWeek[i],
     weatherDataState.daily.date,
     weatherDataState.daily.weatherCode[i],
+    weatherDataState.daily.weatherCodeDescription[i],
     weatherDataState.daily.temperature2mMax[i].toFixed(2),
     weatherDataState.daily.temperature2mMin[i].toFixed(2),
     weatherDataState.daily.uvIndexMax[i].toFixed(2),
@@ -103,7 +115,7 @@ for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length;
         </div>
         <div className={styles["first-section__main-right-wrapper"]}>
           <WeatherDetail weatherDataState={weatherDataState}/>
-          <DaysForecast />
+          <DaysForecast weatherDataState={weatherDataState}/>
         </div>
       </div>
     </div>

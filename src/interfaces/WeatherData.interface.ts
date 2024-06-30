@@ -6,12 +6,14 @@ export interface IWeatherData {
     apparentTemperature: number;
     isDay: number;
     weatherCode: number;
+    weatherCodeDescription: string;
     windSpeed10m: number;
 };
 daily: {
   dayOfWeek: string[];
   date: string;
   weatherCode: Float32Array;
+  weatherCodeDescription: string[];
   temperature2mMax: Float32Array;
   temperature2mMin: Float32Array;
   uvIndexMax: Float32Array;
