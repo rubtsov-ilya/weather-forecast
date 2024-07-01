@@ -29,7 +29,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
 
   useEffect(() => {
     if (weatherDataState && dayTime) {
-      const bgPath = useGetBgInImageWrapper(weatherDataState.daily.weatherCode[0] , dayTime);
+      const bgPath = useGetBgInImageWrapper(weatherDataState.current.weatherCode , dayTime);
       setBackgroudImagePath(bgPath)
     }
 

@@ -40,7 +40,7 @@ const useGetBgInImageWrapper = (codeNumber: number, dayTime: 'day' | 'night'): s
     case 95:
     case 96:
     case 99:
-      bgPath = 'https://weather-forecast-beta-blond.vercel.app/day/Weather=storm';
+      bgPath = 'https://weather-forecast-beta-blond.vercel.app/day/Weather=storm.png';
       break;
     default:
       bgPath = 'https://weather-forecast-beta-blond.vercel.app/day/Weather=clear.png';
@@ -85,7 +85,7 @@ const useGetBgInImageWrapper = (codeNumber: number, dayTime: 'day' | 'night'): s
     case 95:
     case 96:
     case 99:
-      bgPath = 'https://weather-forecast-beta-blond.vercel.app/night/Weather=storm';
+      bgPath = 'https://weather-forecast-beta-blond.vercel.app/night/Weather=storm.png';
       break;
     default:
       bgPath = 'https://weather-forecast-beta-blond.vercel.app/night/Weather=clear.png';
