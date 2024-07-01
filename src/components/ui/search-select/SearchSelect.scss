@@ -30,7 +30,11 @@
 
     &--is-focused {
       border: 1px solid var(--base-gray-600) !important;
-      box-shadow: unset !important;
+      @include phone {
+        /* select is lagging on smartphones because of this style */
+        box-shadow: unset !important;
+      }
+
     }
   }
 
@@ -132,6 +136,10 @@
   &__option:nth-child(n+4) {
     display: none;
   }
+  &__option:nth-child(n+3) {
+    border-bottom: unset !important; 
+  }
+
   &__control--menu-is-open {
     .custom-select__indicator {
       svg {
