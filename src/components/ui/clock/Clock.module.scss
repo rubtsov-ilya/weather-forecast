@@ -1,6 +1,7 @@
 @import '../../../assets/css/mixins';
 .сlock {
   font-family: var(--font-family);
+  width: 53px;
   font-weight: 700;
   font-size: 20px;
   line-height: 140%;
@@ -8,8 +9,10 @@
   color: var(--base-gray-100);
   @include tablet-small {
     font-size: 14px;
+    width: 37.5px;
   }
   @include phone {
     font-size: 12px;
+    width: 32px;
   }
 }
