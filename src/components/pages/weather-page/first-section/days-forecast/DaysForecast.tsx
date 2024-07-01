@@ -15,9 +15,9 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
     <div className={styles["days-forecast"]}>
       <h3 className={styles["days-forecast__title"]}>Прогноз на 5 дней</h3>
       <div className={styles["days-forecast__days-wrapper"]}>
-        {weatherDataState && weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
-          const WeatherIcon = useGetSvgIcon(weatherDataState.daily.weatherCode[index]);
-
+        {weatherDataState && weatherDataState.daily.weatherCode && weatherDataState.daily.dayOfWeek && weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
+          const WeatherIcon = useGetSvgIcon(weatherDataState.daily.weatherCode[index])!;
+          console.log(useGetSvgIcon(weatherDataState.daily.weatherCode[index]))
           return (
             index > 0 && index < 6 &&
             <div key={index} className={styles["days-forecast__day-wrapper"]}>
@@ -33,7 +33,7 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
                   'Вс'}
               </p>
               )}
-              {WeatherIcon && <WeatherIcon className={styles["days-forecast__svg-icon"]}/>}
+              <WeatherIcon className={styles["days-forecast__svg-icon"]}/>
               <p className={styles["days-forecast__weather-desc"]}>{weatherDataState.daily.weatherCodeDescription[index]}</p>
               <div className={styles["days-forecast__minmax-temp-wrapper"]}>
                 <p className={styles["days-forecast__max-temp"]}>{Math.round(weatherDataState.daily.temperature2mMax[index])}ºc</p>

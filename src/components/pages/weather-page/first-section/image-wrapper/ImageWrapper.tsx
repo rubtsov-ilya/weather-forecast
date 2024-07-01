@@ -13,8 +13,8 @@ interface ImageWrapperProps {
  
 const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
   const [dayTime, setDayTime] = useState<'day' | 'night'| null>(null)
-  const [backgroudImagePath, setBackgroudImagePath] = useState<string>('')
   const { shortenedAddress } = useCityInfo()
+  /* const [backgroudImagePath, setBackgroudImagePath] = useState<string>('') */
 
   useLayoutEffect(() => {
     if (weatherDataState) {  
@@ -27,18 +27,19 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
     }
   }, [weatherDataState])
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (weatherDataState && dayTime) {
       const bgPath = useGetBgInImageWrapper(weatherDataState.current.weatherCode , dayTime);
       setBackgroudImagePath(bgPath)
     }
 
-  }, [dayTime, weatherDataState])
+  }, [dayTime, weatherDataState]) */
 
   const WeatherIconComponent = weatherDataState && dayTime ? useGetSvgIcon(weatherDataState?.current.weatherCode, dayTime) : null;
 
   return (
-    <div style={{ backgroundImage: backgroudImagePath && `url('${backgroudImagePath}` }} className={styles["image-wrapper"]}>
+    <div style={{ backgroundImage: weatherDataState && dayTime ? `url('${useGetBgInImageWrapper(weatherDataState.current.weatherCode , dayTime)}` : undefined}} className={styles["image-wrapper"]}>
+      {/* <div style={{ backgroundImage: backgroudImagePath && `url('${backgroudImagePath}` }} className={styles["image-wrapper"]}></div> */}
       <div className={styles["image-wrapper__top-wrapper"]}>
         <div className={styles["image-wrapper__info"]}>
           <h1 className={styles["image-wrapper__location"]}>{shortenedAddress}</h1>

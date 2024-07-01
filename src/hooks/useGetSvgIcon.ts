@@ -114,7 +114,7 @@ const useGetSvgIcon = (codeNumber: number, dayTime?: 'day' | 'night'): React.Fun
           iconSvg = ClearNightSvg;
           break
       }
-    } else if (!dayTime) {
+    } else {
       switch (codeNumber) {
         case 0:
           iconSvg = ClearSvg;

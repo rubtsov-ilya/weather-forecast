@@ -89,6 +89,21 @@ useLayoutEffect(() => {
     fetchWeatherData();
   }}, [latitude, longitude]);
 
+for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length; i++) {
+  console.log(
+
+    weatherDataState.daily.dayOfWeek[i],
+    weatherDataState.daily.weatherCode[i],
+    weatherDataState.daily.date,
+    weatherDataState.daily.weatherCode[i],
+    weatherDataState.daily.weatherCodeDescription[i],
+    weatherDataState.daily.temperature2mMax[i].toFixed(2),
+    weatherDataState.daily.temperature2mMin[i].toFixed(2),
+    weatherDataState.daily.uvIndexMax[i].toFixed(2),
+    weatherDataState.daily.precipitationProbabilityMax[i].toFixed(2)
+  );
+}
+
   return (
     <section className={styles["first-section"]}>
     <div className="container">
