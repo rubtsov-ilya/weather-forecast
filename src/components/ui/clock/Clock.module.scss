@@ -7,6 +7,7 @@
   line-height: 140%;
   text-align: center;
   color: var(--base-gray-100);
+  flex-shrink: 0;
   @include tablet-small {
     font-size: 14px;
     width: 37.5px;
