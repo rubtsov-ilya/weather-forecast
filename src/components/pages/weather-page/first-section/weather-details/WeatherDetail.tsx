@@ -6,6 +6,7 @@ import DropSvg from '../../../../../assets/images/weather-page-images/phosphor-i
 import SunSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Type=sun-dim-light.svg?react'
 import { FC } from "react";
 import { IWeatherData } from "../../../../../interfaces/WeatherData.interface";
+import WeatherDetailsItem from "./weather-details-item/WeatherDetailsItem";
 
 interface WeatherDetailProps {
   weatherDataState: IWeatherData | null
@@ -19,45 +20,19 @@ const WeatherDetail: FC<WeatherDetailProps> = ({ weatherDataState }) => {
       </h2>
       <div className={styles["weather-details__main-wrapper"]}>
         {/* По ощущению */}
-        <div className={styles["weather-details__item-wrapper"]}>
-          <div className={styles["weather-details__desc-wrapper"]}>
-            <TemperatureSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>По ощущению</p>
-          </div>
-          {weatherDataState && <p className={styles["weather-details__value"]}>{Math.round(weatherDataState?.current?.apparentTemperature)}<span className={styles["weather-details__value-span"]}>ºc</span></p>}
-        </div>
+        <WeatherDetailsItem Svg={TemperatureSvg} text={'По ощущению'} unit={'ºc'} value={weatherDataState?.current?.apparentTemperature}/>
+
         {/* Вероятность дождя */}
-        <div className={styles["weather-details__item-wrapper"]}>
-          <div className={styles["weather-details__desc-wrapper"]}>
-            <CloudSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>Вероятность осадков</p>
-          </div>
-          {weatherDataState && <p className={styles["weather-details__value"]}>{Math.round(weatherDataState?.daily?.precipitationProbabilityMax[0])}<span className={styles["weather-details__value-span"]}>%</span></p>}
-        </div>
+        <WeatherDetailsItem Svg={CloudSvg} text={'Вероятность осадков'} unit={'%'} value={weatherDataState?.daily?.precipitationProbabilityMax[0]}/>
+
         {/* Скорость ветра */}
-        <div className={styles["weather-details__item-wrapper"]}>
-          <div className={styles["weather-details__desc-wrapper"]}>
-            <WindSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>Скорость ветра</p>
-          </div>
-          {weatherDataState && <p className={styles["weather-details__value"]}>{Math.round(weatherDataState?.current?.windSpeed10m)} <span className={styles["weather-details__value-span"]}>km/h</span></p>}
-        </div>
+        <WeatherDetailsItem Svg={WindSvg} text={'Скорость ветра'} unit={' km/h'} value={weatherDataState?.current?.windSpeed10m}/>
+       
         {/* Влажность */}
-        <div className={styles["weather-details__item-wrapper"]}>
-          <div className={styles["weather-details__desc-wrapper"]}>
-            <DropSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>Влажность</p>
-          </div>
-          {weatherDataState && <p className={styles["weather-details__value"]}>{Math.round(weatherDataState?.current?.relativeHumidity2m)}<span className={styles["weather-details__value-span"]}>%</span></p>}
-        </div>
+        <WeatherDetailsItem Svg={DropSvg} text={'Влажность'} unit={'%'} value={weatherDataState?.current?.relativeHumidity2m}/>
+
         {/* УФ-индекс */}
-        <div className={styles["weather-details__item-wrapper"]}>
-          <div className={styles["weather-details__desc-wrapper"]}>
-            <SunSvg className={styles["weather-details__svg-icon"]}/>
-            <p className={styles["weather-details__desc"]}>УФ-индекс</p>
-          </div>
-          {weatherDataState && <p className={styles["weather-details__value"]}>{Math.round(weatherDataState?.daily?.uvIndexMax[0])}</p>}
-        </div>
+        <WeatherDetailsItem Svg={SunSvg} text={'УФ-индекс'} unit={''} value={weatherDataState?.daily?.uvIndexMax[0]}/>
       </div>
     </div>
   );
