@@ -17,7 +17,7 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
       <div className={styles["days-forecast__days-wrapper"]}>
         {weatherDataState && weatherDataState.daily.weatherCode && weatherDataState.daily.dayOfWeek && weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
           const WeatherIcon = useGetSvgIcon(weatherDataState.daily.weatherCode[index])!;
-          console.log(useGetSvgIcon(weatherDataState.daily.weatherCode[index]))
+          /* console.log(useGetSvgIcon(weatherDataState.daily.weatherCode[index])) */
           return (
             index > 0 && index < 6 &&
             <div key={index} className={styles["days-forecast__day-wrapper"]}>

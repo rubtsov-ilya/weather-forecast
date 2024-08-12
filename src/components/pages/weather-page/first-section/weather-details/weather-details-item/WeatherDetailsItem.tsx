@@ -15,7 +15,7 @@ const WeatherDetailsItem: FC<WeatherDetailsItemProps> = ({Svg, text, value, unit
             <Svg className={styles["details-item__svg-icon"]}/>
             <p className={styles["details-item__desc"]}>{text}</p>
           </div>
-          {value && <p className={styles["details-item__value"]}>{Math.round(value)}<span className={styles["details-item__value-span"]}>{unit}</span></p>}
+          {value !== undefined && <p className={styles["details-item__value"]}>{Math.round(value)}<span className={styles["details-item__value-span"]}>{unit}</span></p>}
     </div>
   )
 }

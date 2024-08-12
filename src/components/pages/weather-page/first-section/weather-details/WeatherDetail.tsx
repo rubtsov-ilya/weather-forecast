@@ -13,11 +13,13 @@ interface WeatherDetailProps {
 }
 
 const WeatherDetail: FC<WeatherDetailProps> = ({ weatherDataState }) => {
+  console.log(weatherDataState?.daily?.precipitationProbabilityMax[0])
   return (
     <div className={styles["weather-details"]}>
       <h2 className={styles["weather-details__title"]}>
         Подробности на сегодня
       </h2>
+      
       <div className={styles["weather-details__main-wrapper"]}>
         {/* По ощущению */}
         <WeatherDetailsItem Svg={TemperatureSvg} text={'По ощущению'} unit={'ºc'} value={weatherDataState?.current?.apparentTemperature}/>
