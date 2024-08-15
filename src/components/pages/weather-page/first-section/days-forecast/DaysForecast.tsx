@@ -36,8 +36,8 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
               <WeatherIcon className={styles["days-forecast__svg-icon"]}/>
               <p className={styles["days-forecast__weather-desc"]}>{weatherDataState.daily.weatherCodeDescription[index]}</p>
               <div className={styles["days-forecast__minmax-temp-wrapper"]}>
-                <p className={styles["days-forecast__max-temp"]}>{Math.round(weatherDataState.daily.temperature2mMax[index])}ºc</p>
-                <p className={styles["days-forecast__min-temp"]}>{Math.round(weatherDataState.daily.temperature2mMin[index])}ºc</p>
+                <span className={styles["days-forecast__max-temp"]}>{Math.round(weatherDataState.daily.temperature2mMax[index])}ºc</span>
+                <span className={styles["days-forecast__min-temp"]}>{Math.round(weatherDataState.daily.temperature2mMin[index])}ºc</span>
               </div>
             </div>
           );
