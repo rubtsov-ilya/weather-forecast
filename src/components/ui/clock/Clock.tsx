@@ -35,7 +35,7 @@ const Clock: FC<ClockProps> = ({ weatherDataState }) => {
 
   return (
     <>
-      <p className={styles["сlock"]}>{weatherDataState ? time : null}</p>
+      <span className={styles["сlock"]}>{weatherDataState ? time : null}</span>
     </>
   )
 }
