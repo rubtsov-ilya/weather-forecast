@@ -1,28 +1,29 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistStore, 
-  persistReducer, 
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER, } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import cityInfoReducer from './slices/cityInfoSlice'
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
+import cityInfoReducer from './slices/cityInfoSlice';
 
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['cityInfo']
-}
+  whitelist: ['cityInfo'],
+};
 
 const rootReduser = combineReducers({
   cityInfo: cityInfoReducer,
-})
+});
 
-const persistedReducer = persistReducer(persistConfig, rootReduser)
-
+const persistedReducer = persistReducer(persistConfig, rootReduser);
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -32,5 +33,5 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-})
-export const persistor = persistStore(store)
+});
+export const persistor = persistStore(store);

@@ -1,13 +1,14 @@
-import { FC, useEffect, useLayoutEffect, useState } from 'react'
-import './SearchSelect.scss'
-import Select from "react-select";
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
+import './SearchSelect.scss';
+import Select from 'react-select';
 import { SingleValue } from 'react-select';
-import citiesDb from '../../../../data_base/cities-db.json'
+
+import { useDispatch } from 'react-redux';
+
+import citiesDb from '../../../../data_base/cities-db.json';
 import { ISelectOptions } from '../../../interfaces/SelectOptions.interface';
-import { useDispatch } from 'react-redux'
 import { setCityInfo } from '../../../redux/slices/cityInfoSlice';
 import useCityInfo from '../../../hooks/useCityInfo';
-
 
 interface SearchSelectProps {
   isCityPage?: boolean;
@@ -16,9 +17,11 @@ interface SearchSelectProps {
 const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-  const locationSearchParams: URLSearchParams = new URLSearchParams(window.location.search);
-  const { latitude, longitude } = useCityInfo()
-  const dispatch = useDispatch()
+  const locationSearchParams: URLSearchParams = new URLSearchParams(
+    window.location.search,
+  );
+  const { latitude, longitude } = useCityInfo();
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     if (inputValue.length > 0) {
@@ -26,34 +29,39 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
     } else {
       setMenuIsOpen(false);
     }
-    
-  }, [inputValue])
+  }, [inputValue]);
 
   useEffect(() => {
     const latValue: string | null = locationSearchParams.get('lat');
     const lonValue: string | null = locationSearchParams.get('lon');
     if (latValue && lonValue) {
       if (latValue === latitude && lonValue === longitude) {
-        return
+        return;
       } else {
-        const newCity = citiesDb.find((city) => city.latitude === latValue && city.longitude === lonValue)
+        const newCity = citiesDb.find(
+          (city) => city.latitude === latValue && city.longitude === lonValue,
+        );
         if (newCity) {
-          dispatch(setCityInfo({
-            regionType: newCity.regionType,
-            region: newCity.region,
-            areaType: newCity.areaType,
-            area: newCity.area,
-            city: newCity.city,
-            latitude: newCity.latitude,
-            longitude: newCity.longitude,
-            label: newCity.label,
-            value: newCity.value,
-            shortenedAddress: newCity.shortenedAddress
-          })
-      )} else {
-          return
-        }}} 
-  }, [])
+          dispatch(
+            setCityInfo({
+              regionType: newCity.regionType,
+              region: newCity.region,
+              areaType: newCity.areaType,
+              area: newCity.area,
+              city: newCity.city,
+              latitude: newCity.latitude,
+              longitude: newCity.longitude,
+              label: newCity.label,
+              value: newCity.value,
+              shortenedAddress: newCity.shortenedAddress,
+            }),
+          );
+        } else {
+          return;
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (latitude && longitude) {
@@ -62,13 +70,14 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
       const newUrl = `?${locationSearchParams.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
+  }, [latitude, longitude]);
 
-  }, [latitude, longitude])
-  
-
-  const handleChangeSelect = (selectValue: SingleValue<ISelectOptions>): void => {
+  const handleChangeSelect = (
+    selectValue: SingleValue<ISelectOptions>,
+  ): void => {
     if (selectValue) {
-      dispatch(setCityInfo({
+      dispatch(
+        setCityInfo({
           regionType: selectValue.regionType,
           region: selectValue.region,
           areaType: selectValue.areaType,
@@ -79,34 +88,35 @@ const SearchSelect: FC<SearchSelectProps> = ({ isCityPage }) => {
           label: selectValue.label,
           value: selectValue.value,
           shortenedAddress: selectValue.shortenedAddress,
-        })
-    )}
-  }
+        }),
+      );
+    }
+  };
 
   const NoOptionsMessage = (): React.ReactElement => (
-    <div className="custom-select__no-options-message">
-      Ничего не найдено
-    </div>
+    <div className="custom-select__no-options-message">Ничего не найдено</div>
   );
 
   return (
     <Select
-      placeholder='Поиск города'
+      placeholder="Поиск города"
       onInputChange={(inputValue: string) => setInputValue(inputValue)}
       onChange={handleChangeSelect}
       isSearchable={true}
       isLoading={false}
-      className={ isCityPage ? `custom-select custom-select--city-page` : "custom-select"}
+      className={
+        isCityPage ? 'custom-select custom-select--city-page' : 'custom-select'
+      }
       classNamePrefix="custom-select"
       name="color"
       options={citiesDb}
       menuIsOpen={menuIsOpen}
       hideSelectedOptions={true}
       components={{
-        NoOptionsMessage
+        NoOptionsMessage,
       }}
     />
-  )
-}
+  );
+};
 
-export default SearchSelect
+export default SearchSelect;

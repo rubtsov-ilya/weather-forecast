@@ -23,14 +23,14 @@ const initialState: IInitialState = {
   longitude: null,
   label: null,
   value: null,
-  shortenedAddress: null
+  shortenedAddress: null,
 };
 
 const cityInfoSlice = createSlice({
   name: 'cityInfo',
   initialState,
   selectors: {
-    selectCityInfo: state => state,
+    selectCityInfo: (state) => state,
   },
   reducers: {
     setCityInfo(state, action: PayloadAction<IInitialState>) {
@@ -62,6 +62,6 @@ const cityInfoSlice = createSlice({
   },
 });
 
-export const { setCityInfo } = cityInfoSlice.actions
-export const { selectCityInfo } = cityInfoSlice.selectors
-export default cityInfoSlice.reducer
+export const { setCityInfo } = cityInfoSlice.actions;
+export const { selectCityInfo } = cityInfoSlice.selectors;
+export default cityInfoSlice.reducer;

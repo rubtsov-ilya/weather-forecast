@@ -8,15 +8,15 @@ export interface IWeatherData {
     weatherCode: number;
     weatherCodeDescription: string;
     windSpeed10m: number;
-};
-daily: {
-  dayOfWeek: string[];
-  date: string;
-  weatherCode: Float32Array;
-  weatherCodeDescription: string[];
-  temperature2mMax: Float32Array;
-  temperature2mMin: Float32Array;
-  uvIndexMax: Float32Array;
-  precipitationProbabilityMax: Float32Array;
-};
+  };
+  daily: {
+    dayOfWeek: string[];
+    date: string;
+    weatherCode: Float32Array;
+    weatherCodeDescription: string[];
+    temperature2mMax: Float32Array;
+    temperature2mMin: Float32Array;
+    uvIndexMax: Float32Array;
+    precipitationProbabilityMax: Float32Array;
+  };
 }
