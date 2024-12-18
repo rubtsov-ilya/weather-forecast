@@ -15,7 +15,7 @@ import ImageWrapper from './image-wrapper/ImageWrapper';
 import WeatherDetail from './weather-details/WeatherDetail';
 import DaysForecast from './days-forecast/DaysForecast';
 
-import styles from './FirstSection.module.scss';
+import styles from './WeatherInfoSection.module.scss';
 
 const WeatherInfoSection: FC = () => {
   const [weatherDataState, setWeatherDataState] = useState<IWeatherData | null>(
@@ -145,17 +145,17 @@ const WeatherInfoSection: FC = () => {
 } */
 
   return (
-    <section className={styles['first-section']}>
+    <section className={styles['weather-info-section']}>
       <div className="container">
-        <div className={styles['first-section__content']}>
-          <div className={styles['first-section__main-left-wrapper']}>
-            <div className={styles['first-section__search-wrapper']}>
-              <LogoSvg className={styles['first-section__logo']} />
+        <div className={styles['weather-info-section__content']}>
+          <div className={styles['weather-info-section__main-left-wrapper']}>
+            <div className={styles['weather-info-section__search-wrapper']}>
+              <LogoSvg className={styles['weather-info-section__logo']} />
               <SearchSelect isCityPage={true} />
             </div>
             <ImageWrapper weatherDataState={weatherDataState} />
           </div>
-          <div className={styles['first-section__main-right-wrapper']}>
+          <div className={styles['weather-info-section__main-right-wrapper']}>
             <WeatherDetail weatherDataState={weatherDataState} />
             <DaysForecast weatherDataState={weatherDataState} />
           </div>
