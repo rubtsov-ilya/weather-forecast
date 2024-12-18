@@ -8,9 +8,10 @@ import styles from './DaysForecast.module.scss';
 
 interface DaysForecastProps {
   weatherDataState: IWeatherData | null;
+  dayTime: 'day' | 'night' | null;
 }
 
-const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
+const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState, dayTime }) => {
   const isMobileMediaQuery = useMediaQuery({ query: '(max-width: 575px)' });
 
   return (
@@ -23,8 +24,8 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
           weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
             const WeatherIcon = useGetSvgIcon(
               weatherDataState.daily.weatherCode[index],
+              dayTime
             )!;
-            /* console.log(useGetSvgIcon(weatherDataState.daily.weatherCode[index])) */
             return (
               index > 0 &&
               index < 6 && (
@@ -33,12 +34,12 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
                   className={styles['days-forecast__day-wrapper']}
                 >
                   {!isMobileMediaQuery && (
-                    <p className={styles['days-forecast__day-name']}>
+                    <span className={styles['days-forecast__day-name']}>
                       {index === 1 ? 'Завтра' : dayOfWeekValue}
-                    </p>
+                    </span>
                   )}
                   {isMobileMediaQuery && (
-                    <p className={styles['days-forecast__day-name']}>
+                    <span className={styles['days-forecast__day-name']}>
                       {dayOfWeekValue === 'Понедельник'
                         ? 'Пн'
                         : dayOfWeekValue === 'Вторник'
@@ -52,7 +53,7 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
                                 : dayOfWeekValue === 'Суббота'
                                   ? 'Сб'
                                   : 'Вс'}
-                    </p>
+                    </span>
                   )}
                   <WeatherIcon className={styles['days-forecast__svg-icon']} />
                   <p className={styles['days-forecast__weather-desc']}>

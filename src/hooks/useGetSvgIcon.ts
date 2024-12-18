@@ -21,10 +21,12 @@ import StormSvg from '../assets/images/weather-page-images/days-forecast-svg/Wea
 
 const useGetSvgIcon = (
   codeNumber: number,
-  dayTime?: 'day' | 'night',
+  dayTime?: 'day' | 'night' | null,
 ): React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null => {
   let iconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null =
     null;
+
+  console.log(`codeNumber: ${codeNumber}, dayTime: ${dayTime}`);
   if (dayTime === 'day') {
     switch (codeNumber) {
       case 0:

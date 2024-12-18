@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
 import { fetchWeatherApi } from 'openmeteo';
 
@@ -21,6 +21,9 @@ const WeatherInfoSection: FC = () => {
   const [weatherDataState, setWeatherDataState] = useState<IWeatherData | null>(
     null,
   );
+
+  const [dayTime, setDayTime] = useState<'day' | 'night' | null>(null);
+
   const { latitude, longitude } = useCityInfo();
   const url = 'https://api.open-meteo.com/v1/forecast';
   const params = {
@@ -129,6 +132,17 @@ const WeatherInfoSection: FC = () => {
     }
   }, [latitude, longitude]);
 
+  useEffect(() => {
+    if (weatherDataState) {
+      const currentHour = weatherDataState.current.time.getHours();
+      if (currentHour >= 18 || currentHour < 6) {
+        setDayTime('night');
+      } else {
+        setDayTime('day');
+      }
+    }
+  }, [weatherDataState]);
+
   /* for (let i = 0; weatherDataState && i < weatherDataState.daily.dayOfWeek.length; i++) {
   console.log(
 
@@ -153,11 +167,17 @@ const WeatherInfoSection: FC = () => {
               <LogoSvg className={styles['weather-info-section__logo']} />
               <SearchSelect isCityPage={true} />
             </div>
-            <ImageWrapper weatherDataState={weatherDataState} />
+            <ImageWrapper
+              dayTime={dayTime}
+              weatherDataState={weatherDataState}
+            />
           </div>
           <div className={styles['weather-info-section__main-right-wrapper']}>
             <WeatherDetail weatherDataState={weatherDataState} />
-            <DaysForecast weatherDataState={weatherDataState} />
+            <DaysForecast
+              dayTime={dayTime}
+              weatherDataState={weatherDataState}
+            />
           </div>
         </div>
       </div>

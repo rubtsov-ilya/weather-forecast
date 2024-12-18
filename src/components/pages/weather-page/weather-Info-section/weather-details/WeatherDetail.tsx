@@ -15,7 +15,6 @@ interface WeatherDetailProps {
 }
 
 const WeatherDetail: FC<WeatherDetailProps> = ({ weatherDataState }) => {
-  console.log(weatherDataState?.daily?.precipitationProbabilityMax[0]);
   return (
     <div className={styles['weather-details']}>
       <h2 className={styles['weather-details__title']}>
