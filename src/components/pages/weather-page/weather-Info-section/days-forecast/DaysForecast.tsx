@@ -24,7 +24,7 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState, dayTime }) => {
           weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
             const WeatherIcon = useGetSvgIcon(
               weatherDataState.daily.weatherCode[index],
-              dayTime
+              dayTime,
             )!;
             return (
               index > 0 &&
