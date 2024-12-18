@@ -119,7 +119,7 @@ const useGetSvgIcon = (
         iconSvg = ClearNightSvg;
         break;
     }
-  } else {
+  } else if (dayTime === undefined) {
     switch (codeNumber) {
       case 0:
         iconSvg = ClearSvg;

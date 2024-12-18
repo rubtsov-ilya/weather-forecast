@@ -8,10 +8,9 @@ import styles from './DaysForecast.module.scss';
 
 interface DaysForecastProps {
   weatherDataState: IWeatherData | null;
-  dayTime: 'day' | 'night' | null;
 }
 
-const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState, dayTime }) => {
+const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState }) => {
   const isMobileMediaQuery = useMediaQuery({ query: '(max-width: 575px)' });
 
   return (
@@ -24,7 +23,6 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState, dayTime }) => {
           weatherDataState.daily.dayOfWeek.map((dayOfWeekValue, index) => {
             const WeatherIcon = useGetSvgIcon(
               weatherDataState.daily.weatherCode[index],
-              dayTime,
             )!;
             return (
               index > 0 &&
@@ -56,9 +54,9 @@ const DaysForecast: FC<DaysForecastProps> = ({ weatherDataState, dayTime }) => {
                     </span>
                   )}
                   <WeatherIcon className={styles['days-forecast__svg-icon']} />
-                  <p className={styles['days-forecast__weather-desc']}>
+                  <span className={styles['days-forecast__weather-desc']}>
                     {weatherDataState.daily.weatherCodeDescription[index]}
-                  </p>
+                  </span>
                   <div className={styles['days-forecast__minmax-temp-wrapper']}>
                     <span className={styles['days-forecast__max-temp']}>
                       {Math.round(

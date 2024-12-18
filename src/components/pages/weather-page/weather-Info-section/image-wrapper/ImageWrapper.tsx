@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useLayoutEffect, useState } from 'react';
 
 import Clock from '../../../../ui/clock/Clock';
 import DividerSvg from '../../../../../assets/images/weather-page-images/phosphor-icons/Divider.svg?react';
@@ -11,12 +11,23 @@ import styles from './ImageWrapper.module.scss';
 
 interface ImageWrapperProps {
   weatherDataState: IWeatherData | null;
-  dayTime: 'day' | 'night' | null;
 }
 
-const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState, dayTime }) => {
+const ImageWrapper: FC<ImageWrapperProps> = ({ weatherDataState }) => {
+  const [dayTime, setDayTime] = useState<'day' | 'night' | null>(null);
   const { shortenedAddress } = useCityInfo();
   /* const [backgroudImagePath, setBackgroudImagePath] = useState<string>('') */
+
+  useLayoutEffect(() => {
+    if (weatherDataState) {
+      const currentHour = weatherDataState.current.time.getHours();
+      if (currentHour >= 18 || currentHour < 6) {
+        setDayTime('night');
+      } else {
+        setDayTime('day');
+      }
+    }
+  }, [weatherDataState]);
 
   /* useEffect(() => {
     if (weatherDataState && dayTime) {
