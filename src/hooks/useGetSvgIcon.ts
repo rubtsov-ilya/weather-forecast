@@ -25,8 +25,6 @@ const useGetSvgIcon = (
 ): React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null => {
   let iconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>> | null =
     null;
-
-  console.log(`codeNumber: ${codeNumber}, dayTime: ${dayTime}`);
   if (dayTime === 'day') {
     switch (codeNumber) {
       case 0:
