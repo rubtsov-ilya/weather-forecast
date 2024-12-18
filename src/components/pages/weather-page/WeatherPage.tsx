@@ -1,11 +1,10 @@
 import { FC } from 'react';
-
-import FirstSection from './first-section/FirstSection';
+import WeatherInfoSection from './weather-Info-section/WeatherInfoSection';
 
 const WeatherPage: FC = () => {
   return (
     <main>
-      <FirstSection />
+      <WeatherInfoSection />
     </main>
   );
 };

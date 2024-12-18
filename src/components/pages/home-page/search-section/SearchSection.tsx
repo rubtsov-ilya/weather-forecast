@@ -7,7 +7,7 @@ import SearchSelect from '../../../ui/search-select/SearchSelect';
 
 import styles from './FirstSection.module.scss';
 
-const FirstSection: FC = () => {
+const SearchSection: FC = () => {
   return (
     <section className={styles['first-section']}>
       <div className="container">
@@ -29,4 +29,4 @@ const FirstSection: FC = () => {
   );
 };
 
-export default FirstSection;
+export default SearchSection;

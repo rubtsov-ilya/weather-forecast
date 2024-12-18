@@ -17,7 +17,7 @@ import DaysForecast from './days-forecast/DaysForecast';
 
 import styles from './FirstSection.module.scss';
 
-const FirstSection: FC = () => {
+const WeatherInfoSection: FC = () => {
   const [weatherDataState, setWeatherDataState] = useState<IWeatherData | null>(
     null,
   );
@@ -165,4 +165,4 @@ const FirstSection: FC = () => {
   );
 };
 
-export default FirstSection;
+export default WeatherInfoSection;
